@@ -17,7 +17,6 @@ Commands used to create the table in the database:
 docker-compose up -d
 docker-compose exec db mysql -u root -p #root
 use proveedores;
-```
 CREATE TABLE proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -28,3 +27,4 @@ CREATE TABLE proveedores (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+```
