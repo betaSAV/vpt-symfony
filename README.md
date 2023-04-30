@@ -52,10 +52,10 @@ symfony server:start --no-tls
 
 /index/:
 
-<img src="https://user-images.githubusercontent.com/19414375/235377697-00f5cfa5-aef9-4f2f-8194-3ab4ae66aa67.png" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/19414375/235377697-00f5cfa5-aef9-4f2f-8194-3ab4ae66aa67.png">
 
 /proveedor/edit/2:
 
-<img src="https://user-images.githubusercontent.com/19414375/235377806-9949589e-2204-4f04-84ec-f4338048d85c.png" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/19414375/235377806-9949589e-2204-4f04-84ec-f4338048d85c.png">
 
 
