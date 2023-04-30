@@ -1,3 +1,20 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+
+proveedores_index:
+    path: /
+    controller: App\Controller\ProviderController::index
+
+proveedor_new:
+    path: /proveedor/new
+    controller: App\Controller\ProviderController::new
+
+proveedores_edit:
+    path: /proveedor/edit/{id}
+    controller: App\Controller\ProviderController::edit
+    methods: [GET, POST]
+
+proveedores_delete:
+    path: /proveedor/delete/{id}
+    controller: App\Controller\ProviderController::delete
+    methods: [DELETE]
+

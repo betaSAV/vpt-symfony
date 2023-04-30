@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %} {% block body %}
+<h1>Proveedores</h1>
+<a href="{{ path('proveedor_new') }}" class="btn btn-primary">Crear nuevo proveedor</a>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo electrónico</th>
+      <th>Teléfono de contacto</th>
+      <th>Tipo de proveedor</th>
+      <th>Activo</th>
+      <th>Creado en</th>
+      <th>Actualizado en</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for proveedor in proveedores %}
+    <tr>
+      <td>{{ proveedor.nombre }}</td>
+      <td>{{ proveedor.correoElectronico }}</td>
+      <td>{{ proveedor.telefono }}</td>
+      <td>{{ proveedor.tipo }}</td>
+      <td>{{ proveedor.activo ? "Sí" : "No" }}</td>
+      <td>{{ proveedor.creadoEn|date('Y-m-d H:i:s') }}</td>
+      <td>{{ proveedor.actualizadoEn|date('Y-m-d H:i:s') }}</td>
+      <td>
+        <a href="{{ path('proveedores_edit', { id: proveedor.id }) }}"
+          >Editar</a
+        >
+        <form
+          action="{{ path('proveedor_delete', { id: proveedor.id }) }}"
+          method="post"
+          onsubmit="return confirm('¿Está seguro que desea eliminar este proveedor?')"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <input
+            type="hidden"
+            name="_token"
+            value="{{ csrf_token('delete' ~ proveedor.id) }}"
+          />
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

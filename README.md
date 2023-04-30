@@ -15,7 +15,7 @@ Commands used to create the table in the database:
 
 ```bash
 docker-compose up -d
-docker-compose exec db mysql -u root -p #root
+docker-compose exec db mysql -uroot -proot
 use proveedores;
 CREATE TABLE proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,4 +27,16 @@ CREATE TABLE proveedores (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+```
+
+Commands used to install and use twig:
+
+```bash
+composer require symfony/twig-bundle
+```
+
+Command to use every time docker is started:
+
+```bash
+symfony server:start --no-tls
 ```
