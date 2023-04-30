@@ -20,14 +20,26 @@ class ProveedorType extends AbstractType
             ->add('nombre', TextType::class, [
                 'label' => 'Nombre',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom: 10px;',
+                ],
             ])
             ->add('correo_electronico', EmailType::class, [
                 'label' => 'Correo electrónico',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom: 10px;',
+                ],
             ])
             ->add('telefono', TelType::class, [
                 'label' => 'Teléfono',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom: 10px;',
+                ],
             ])
             ->add('tipo', ChoiceType::class, [
                 'label' => 'Tipo',
@@ -37,6 +49,10 @@ class ProveedorType extends AbstractType
                     'Pista' => 'pista',
                     'Complemento' => 'complemento',
                 ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom: 10px;',
+                ],
             ])
             ->add('activo', ChoiceType::class, [
                 'label' => 'Activo',
@@ -45,11 +61,15 @@ class ProveedorType extends AbstractType
                     'Sí' => true,
                     'No' => false,
                 ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom: 10px;',
+                ],
             ])
             ->add('guardar', SubmitType::class, [
                 'label' => 'Guardar',
                 'attr' => [
-                    'class' => 'btn btn-primary',
+                    'class' => 'btn btn-md btn-primary',
                 ],
             ]);
     }

@@ -1,49 +1,65 @@
-{% extends 'base.html.twig' %} {% block body %}
-<h1>Proveedores</h1>
-<a href="{{ path('proveedor_new') }}" class="btn btn-primary">Crear nuevo proveedor</a>
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Correo electrónico</th>
-      <th>Teléfono de contacto</th>
-      <th>Tipo de proveedor</th>
-      <th>Activo</th>
-      <th>Creado en</th>
-      <th>Actualizado en</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for proveedor in proveedores %}
-    <tr>
-      <td>{{ proveedor.nombre }}</td>
-      <td>{{ proveedor.correoElectronico }}</td>
-      <td>{{ proveedor.telefono }}</td>
-      <td>{{ proveedor.tipo }}</td>
-      <td>{{ proveedor.activo ? "Sí" : "No" }}</td>
-      <td>{{ proveedor.creadoEn|date('Y-m-d H:i:s') }}</td>
-      <td>{{ proveedor.actualizadoEn|date('Y-m-d H:i:s') }}</td>
-      <td>
-        <a href="{{ path('proveedores_edit', { id: proveedor.id }) }}"
-          >Editar</a
-        >
-        <form
-          action="{{ path('proveedor_delete', { id: proveedor.id }) }}"
-          method="post"
-          onsubmit="return confirm('¿Está seguro que desea eliminar este proveedor?')"
-        >
-          <input type="hidden" name="_method" value="DELETE" />
-          <input
-            type="hidden"
-            name="_token"
-            value="{{ csrf_token('delete' ~ proveedor.id) }}"
-          />
-          <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  {% endblock %}
+{% block javascripts %}
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1 class="text-center">Proveedores</h1>
+  <div class="text-center mb-3">
+    <a href="{{ path('proveedor_new') }}" class="btn btn-primary">Crear nuevo proveedor</a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo electrónico</th>
+          <th>Teléfono de contacto</th>
+          <th>Tipo de proveedor</th>
+          <th>Activo</th>
+          <th>Creado en</th>
+          <th>Actualizado en</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for proveedor in proveedores %}
+        <tr>
+          <td>{{ proveedor.nombre }}</td>
+          <td>{{ proveedor.correoElectronico }}</td>
+          <td>{{ proveedor.telefono }}</td>
+          <td>{{ proveedor.tipo }}</td>
+          <td>{{ proveedor.activo ? "Sí" : "No" }}</td>
+          <td>{{ proveedor.creadoEn|date('Y-m-d H:i:s') }}</td>
+          <td>{{ proveedor.actualizadoEn|date('Y-m-d H:i:s') }}</td>
+          <td>
+            <a href="{{ path('proveedor_edit', { id: proveedor.id }) }}" class="btn btn-sm btn-primary btn-block" style="margin-bottom: 5px;">Editar</a>
+            <form
+              action="{{ path('proveedor_delete', { id: proveedor.id }) }}"
+              method="post"
+              onsubmit="return confirm('¿Está seguro que desea eliminar este proveedor?')"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
+              <input
+                type="hidden"
+                name="_token"
+                value="{{ csrf_token('delete' ~ proveedor.id) }}"
+              />
+              <button type="submit" class="btn btn-sm btn-danger btn-block">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}
